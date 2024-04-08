@@ -10,4 +10,16 @@ const tema = {
   input: '#FFFFFF',
 }
 
-export { tema };
+const claro = {
+  fundo: '#FFFFFF',
+  titulo: '#051+33',
+  texto: '#000000',
+  branco: '#000000',
+  preto: '#FFFFFF',
+  cinza: '#ebebeb',
+  ultimosVistos: '#ccefff',
+  botao: '#2a663c',
+  input: '#0b2a52',
+}
+
+export { tema ,claro};
