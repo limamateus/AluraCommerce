@@ -1,6 +1,5 @@
 import { Text, View, FlatList, StatusBar, TouchableOpacity } from 'react-native';
 import { Produto } from '../../componentes/Produto';
-import { produtos } from './produtos';
 import { estilos } from './estilos';
 import { Feather } from 'react-native-vector-icons'
 import MaterialCommunityIcons from 'react-native-vector-icons/Feather';
@@ -18,7 +17,7 @@ export default function Principal({navigation}) {
 
    const {usuario} = useContext(AutenticacaoContext)
 
-   const {ultimosVistos,quantidade} = useContext(ProdutosContext)
+   const {carrinnho,quantidade} = useContext(ProdutosContext)
 
   return (
     <View style={estilo.container}>
@@ -26,7 +25,7 @@ export default function Principal({navigation}) {
       <View style={estilo.tituloArea}>
         <Text style={estilo.titulo}>Olá, {usuario.nome}</Text>
         <View style={estilo.carrinhoArea}>
-          <TouchableOpacity onPress={() => navigation.navigate('Resumo')}>
+          <TouchableOpacity onPress={() => {}}>
             <Feather name="shopping-cart" size={30} color="#fff" style={estilo.carrinhoIcon} />
           </TouchableOpacity>
           {
@@ -42,29 +41,17 @@ export default function Principal({navigation}) {
       </View>
 
       <FlatList
-        data={produtos}
+        data={carrinnho}
         keyExtractor={item => Math.random()}
-        renderItem={({ item }) => <Produto item={item} adicionar={true} />}
+        renderItem={({ item }) => <Produto item={item} adicionar={false} />}
         style={estilo.lista}
-        showsVerticalScrollIndicator={false}
-        ListHeaderComponent={() =>
-          <View>
-            {ultimosVistos.length > 0 &&
-              <View style={estilo.ultimosVistos}>
-                <Text style={estilo.tituloUltimosVistos}>Últimos vistos</Text>
-                <FlatList
-                  data={ultimosVistos}
-                  keyExtractor={item => Math.random()}
-                  renderItem={({ item }) => <Produto item={item} adicionar={false} />}
-                  style={estilo.lista}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                />
-              </View>}
-            <Text style={[estilo.titulo, { paddingLeft: 16 }]}>Produtos</Text>
-          </View>
-        }
+        showsVerticalScrollIndicator={false}        
       />
+
+
+      <TouchableOpacity style={estilo.botao} onPress={() => navigation.navigate('Finalizar')}>
+        <Text style={estilo.botaoTexto}>Finalizar</Text>
+      </TouchableOpacity>
     </View>
   );
 }
