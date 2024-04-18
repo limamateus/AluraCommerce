@@ -9,18 +9,21 @@ import { AutenticacaoContext } from '../../contexts/AutenticacaoContext';
 import { ProdutosContext } from '../../contexts/ProdutosContext';
 
 
-export default function Principal({navigation}) {
-  
+export default function Principal({ navigation }) {
 
-  const {temaEscolhido } = useContext(TemaContext) 
+
+  const { temaEscolhido } = useContext(TemaContext)
   const estilo = estilos(temaEscolhido);
 
 
   return (
     <View style={estilo.container}>
-      <StatusBar />      
+      <StatusBar />
 
-      <TouchableOpacity style={estilo.botao} >
+      <TouchableOpacity
+        style={estilo.botao}
+        onPress={() => navigation.navigate('Principal')}
+      >
         <Text style={estilo.botaoTexto}>Finalizar</Text>
       </TouchableOpacity>
     </View>

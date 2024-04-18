@@ -6,7 +6,7 @@ import { ProdutosContext } from '../../contexts/ProdutosContext';
 export function Produto({ item, adicionar }) {
 
 const {viuProduto} = useContext(ProdutosContext)
-
+ 
   return (
     <View style={estilos.cartao}>
       <Image style={estilos.imagem} source={item.imagem}/>

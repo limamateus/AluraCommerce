@@ -3,10 +3,11 @@ import { Produto } from '../../componentes/Produto';
 import { estilos } from './estilos';
 import { Feather } from 'react-native-vector-icons'
 import MaterialCommunityIcons from 'react-native-vector-icons/Feather';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { TemaContext } from "../../contexts/TemaContext";
 import { AutenticacaoContext } from '../../contexts/AutenticacaoContext';
 import { ProdutosContext } from '../../contexts/ProdutosContext';
+import { buscarProdutos } from '../../servicos/requisicoes/produtos';
 
 
 export default function Principal({navigation}) {
@@ -17,7 +18,9 @@ export default function Principal({navigation}) {
 
    const {usuario} = useContext(AutenticacaoContext)
 
-   const {carrinnho,quantidade} = useContext(ProdutosContext)
+   const {carrinho,quantidade} = useContext(ProdutosContext)
+
+ 
 
   return (
     <View style={estilo.container}>
@@ -41,7 +44,7 @@ export default function Principal({navigation}) {
       </View>
 
       <FlatList
-        data={carrinnho}
+        data={carrinho}
         keyExtractor={item => Math.random()}
         renderItem={({ item }) => <Produto item={item} adicionar={false} />}
         style={estilo.lista}
